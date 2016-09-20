@@ -3,7 +3,7 @@
 <head>
   <meta content="width=device-width,maximum-scale=1.0,initial-scale=1.0,minimum-scale=1.0,user-scalable=yes,shrink-to-fit=no" name="viewport">
   <meta charset="utf-8">
-  <title>Adhesion Demo</title>
+  <title>Adhesion SafeFrame</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> </head>
 <body>
@@ -25,10 +25,37 @@ div#target {
 }
 </style>
 <div class="container" role="main" id='container'>
-  <h1>Adhesion Demo</h1>
-  <a href="./static.html">Static Version</a><br/>
-  <a href="./safeframe.html">SafeFrame Version</a><br/>
+  <h1>Adhesion SafeFrame Demo</h1>
+  <div class='bigspaceRed'></div>
+  <div id='target'></div>
+  <script type='text/x-safeframe'>
+  {
+      "id" : "target_src",
+      "src" : "../ad/ad.js",
+      "conf" :
+          {
+          "debug" : true,
+          "size" : "300x50",
+          "dest": "target",
+          "supports" : {
+              "exp-ovr" : "1"
+          }
+      }
+  }
+  </script>
+  <div class='bigspaceYellow'></div>
 </div>
+
+<script src='safeframe/js/lib/base.js'></script>
+<script src='safeframe/js/host/host.js'></script>
+<script src='safeframe/js/lib/boot.js'></script>
+<script type="text/javascript">
+    (function() {
+        var conf = new $sf.host.Config({
+            renderFile: "http://localhost:3000/safeframe/html/r.html"
+        });
+    })();
+</script>
 
 </body>
 </html>
