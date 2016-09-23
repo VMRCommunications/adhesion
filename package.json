@@ -1,6 +1,6 @@
 {
   "name": "adhesion-element",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "It change target dom's as adhesion.",
   "scripts": {
     "compile": "NODE_ENV=develop ./node_modules/.bin/webpack --watch",

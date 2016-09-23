@@ -11,5 +11,4 @@ if(typeof $sf !== 'undefined'){
     window.Adhesion('target');
   }
   document.body.appendChild(script);
-  $sf.ext.register(g.self.w, g.self.h, function(status,data){});
 }

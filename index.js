@@ -5,17 +5,21 @@
  */
 /* globals $sf , __DEVELOP__ */
 var Adhesion = function Adhesion(target, headOffset){
+  'use strict';
   var __ = this;
 
   /* */
   __.build = function(height){
     __.log('build');
     if(typeof $sf !== 'undefined'){
-      var g = $sf.ext.geom();
-      var exp_l = g.self.l;
-      var exp_r = g.win.w - g.self.w;
-      var exp_b = height - g.self.h;
-      $sf.ext.expand({l:exp_l, r:exp_r, b:exp_b});
+      var geom = $sf.ext.geom();
+      var allowed = geom.exp;
+      $sf.ext.register(geom.self.w, geom.self.h, function(){return;});
+      var exp = {push: false};
+      exp.l = Math.min(geom.self.l, allowed.l);
+      exp.r = Math.min(geom.win.w - geom.self.w, allowed.r);
+      exp.b = Math.min(height - geom.self.h, allowed.b);
+      $sf.ext.expand(exp);
       return;
     }
     __.currStyle = {};
